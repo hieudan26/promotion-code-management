@@ -19,7 +19,7 @@ spring:
 springdoc:
   show-actuator: true
   paths-to-match: /**
-  packages-to-scan: com.farukgenc.boilerplate.springboot
+  packages-to-scan: com.promotion.code.managment
 
 management:
   endpoint:
