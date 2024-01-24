@@ -5,6 +5,7 @@ import com.promotion.code.managment.security.utils.SecurityConstants;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -55,6 +56,9 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 			}
 			catch (Exception e) {
 				log.error("Authentication Exception : {}", e.getMessage());
+				res.setStatus(HttpStatus.FORBIDDEN.value());
+				res.setHeader("Content-Type", "application/json");  // does not work
+				res.getWriter().write("{ \"Simple\": \"Test\" }");
 			}
 		}
 
